@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 <p align="justify">
-hE!P e um projeto voltado para comunidade de estudantes e funcionários da UTFPR, campus Medianeira. O aplicativo e voltado para postagens de anúncios tais como doações de livros, vagas de estagio ou emprego para estudantes, vendas de móveis e alugueis de moradias. Assim, os usuários ao acessar o aplicativo veriam as publicações ou publicar. E em seguida, o anúncio já ficaria disponível para outros usuários que tem acesso ao aplicativo mobile.
+hE!P é um projeto voltado para comunidade de estudantes e funcionários da UTFPR, campus Medianeira. O aplicativo é voltado para postagens de anúncios tais como doações de livros, vagas de estagio ou emprego para estudantes, vendas de móveis e alugueis de moradias. Assim, os usuários ao acessar o aplicativo veriam as publicações ou publicar. E em seguida, o anúncio já ficaria disponível para outros usuários que tem acesso ao aplicativo mobile.
 <p/>
 
 ## Acesso ao andamento do Projeto
