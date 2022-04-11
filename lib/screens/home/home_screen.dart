@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:help/components/custom_drawer/custom_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  //const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
+      drawer: CustomDrawer(),
       appBar: AppBar(),
     );
   }
