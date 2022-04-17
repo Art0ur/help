@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:help/screens/base/base_screen.dart';
+import 'package:help/stores/page_store.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeParse();
+  setupLocators();
   runApp(const MyApp());
+}
+
+//GetIt serviceLocator, utilizo ele para localizar servicos do meu App
+//page_store sera um servico do app inteiro. Sempre que quiser mudar de pagina, utilizo o GetIt para acessar o page_store e assim mudo de pagina.
+void setupLocators(){
+  GetIt.I.registerSingleton(PageStore());
 }
 
 Future<void> initializeParse() async{
