@@ -26,7 +26,7 @@ class _BaseScreenState extends State<BaseScreen> {
     reaction(
             (_) => pageStore.page,                                              //Sempre que houver uma modificacao no page do meu pageStore, ele vai  chamar a funcao de baixo
                                                                                 // passando a pagina atual e chamando o jumpToPage(page), passando o numero da pagina atual.
-            (page) => pageController.jumpToPage(page)                           //Rever porque nao esta reconhendo o page do jumpToPage
+            (page) => pageController.jumpToPage(page)                               //Rever porque nao esta reconhendo o page do jumpToPage
     );
   }
 
