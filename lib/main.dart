@@ -36,9 +36,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'hE!p',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.yellow,
+        //primaryColor: Colors.yellow,                                            //Rever porque nao muda a cor para amarelo
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        scaffoldBackgroundColor: Colors.yellow,                                 //Seta a cor do background
+        appBarTheme: AppBarTheme(
+          elevation: 0                                                          //Seta a sombra
+        )
       ),
       home: BaseScreen(),
     );

@@ -9,9 +9,9 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRect(
-      //borderRadius: BorderRadius.horizontal(right: Radius.circular(30)),      //Rever porque nao esta funcionando
+      //borderRadius: BorderRadius.horizontal(right: Radius.circular(30)),      //Por em um container
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.6,
+        width: MediaQuery.of(context).size.width * 0.7,
         child: Drawer(
           child: ListView(
             children: [

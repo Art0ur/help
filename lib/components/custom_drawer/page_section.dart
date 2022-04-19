@@ -29,20 +29,28 @@ class PageSection extends StatelessWidget {
           highlighted: pageStore.page == 1,
         ),
         PageTile(
-          label: 'Favoritos',
-          iconData: Icons.favorite,
+          label: 'Chat',
+          iconData: Icons.chat,
           onTap:(){
             pageStore.setPage(2);
           },
           highlighted: pageStore.page == 2,
         ),
         PageTile(
-          label: 'Minha Conta',
-          iconData: Icons.person,
+          label: 'Favoritos',
+          iconData: Icons.favorite,
           onTap:(){
             pageStore.setPage(3);
           },
           highlighted: pageStore.page == 3,
+        ),
+        PageTile(
+          label: 'Minha Conta',
+          iconData: Icons.person,
+          onTap:(){
+            pageStore.setPage(4);
+          },
+          highlighted: pageStore.page == 4,
         ),
       ],
     );
