@@ -38,6 +38,7 @@ dependencies:
   mobx: ^2.0.6+1                                                                  #Para leitura e aplicação: https://pub.dev/packages/mobx    --Biblioteca para gestao gestao de estado
   flutter_mobx: ^2.0.4                                                            #Para leitura e aplicação: https://pub.dev/packages/flutter_mobx
   get_it: ^7.2.0                                                                  #Para leitura e aplicação: https://pub.dev/packages/get_it  --Coloco um objeto num GetIt e consigo recuperar esse mesmo objeto de qualquer local dentro do APP
+  brasil_fields: ^1.4.2                                                           #Para leitura e aplicação: https://pub.dev/packages/brasil_fields
 
 dev_dependencies:
   flutter_test:
