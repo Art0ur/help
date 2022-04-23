@@ -12,7 +12,6 @@ void main() async {
 }
 
 //GetIt serviceLocator, utilizo ele para localizar servicos do meu App
-//page_store sera um servico do app inteiro. Sempre que quiser mudar de pagina, utilizo o GetIt para acessar o page_store e assim mudo de pagina.
 void setupLocators(){
   GetIt.I.registerSingleton(PageStore());
 }
@@ -44,7 +43,8 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.yellow,                                 //Seta a cor do background
         appBarTheme: AppBarTheme(
           elevation: 0                                                          //Seta a sombra
-        )
+        ),
+        cursorColor: Colors.black                                               //Cursor nao fica preto
       ),
       home: BaseScreen(),
     );
