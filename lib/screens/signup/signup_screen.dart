@@ -155,7 +155,7 @@ class SignUpScreen extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)
                           ),
-                          onPressed: signupStore.signUpPressed,
+                          onPressed: null,// signupStore.signUpPressed,
                         ),
                       );
                     }),

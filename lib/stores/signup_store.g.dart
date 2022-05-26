@@ -6,7 +6,7 @@ part of 'signup_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SignupStore on _SignupStore, Store {
   Computed<bool>? _$nameValidComputed;
@@ -15,6 +15,13 @@ mixin _$SignupStore on _SignupStore, Store {
   bool get nameValid => (_$nameValidComputed ??=
           Computed<bool>(() => super.nameValid, name: '_SignupStore.nameValid'))
       .value;
+  Computed<String?>? _$nameErrorComputed;
+
+  @override
+  String? get nameError =>
+      (_$nameErrorComputed ??= Computed<String?>(() => super.nameError,
+              name: '_SignupStore.nameError'))
+          .value;
   Computed<bool>? _$emailValidComputed;
 
   @override
@@ -43,12 +50,11 @@ mixin _$SignupStore on _SignupStore, Store {
       (_$isFormValidComputed ??= Computed<bool>(() => super.isFormValid,
               name: '_SignupStore.isFormValid'))
           .value;
-  Computed<Future<void> Function()>? _$signUpPressedComputed;
+  Computed<bool>? _$loadingComputed;
 
   @override
-  Future<void> Function() get signUpPressed => (_$signUpPressedComputed ??=
-          Computed<Future<void> Function()>(() => super.signUpPressed,
-              name: '_SignupStore.signUpPressed'))
+  bool get loading => (_$loadingComputed ??=
+          Computed<bool>(() => super.loading, name: '_SignupStore.loading'))
       .value;
 
   late final _$nameAtom = Atom(name: '_SignupStore.name', context: context);
@@ -126,19 +132,19 @@ mixin _$SignupStore on _SignupStore, Store {
     });
   }
 
-  late final _$loadingAtom =
-      Atom(name: '_SignupStore.loading', context: context);
+  late final _$_loadingAtom =
+      Atom(name: '_SignupStore._loading', context: context);
 
   @override
-  bool get loading {
-    _$loadingAtom.reportRead();
-    return super.loading;
+  bool get _loading {
+    _$_loadingAtom.reportRead();
+    return super._loading;
   }
 
   @override
-  set loading(bool value) {
-    _$loadingAtom.reportWrite(value, super.loading, () {
-      super.loading = value;
+  set _loading(bool value) {
+    _$_loadingAtom.reportWrite(value, super._loading, () {
+      super._loading = value;
     });
   }
 
@@ -216,13 +222,13 @@ email: ${email},
 phone: ${phone},
 pass1: ${pass1},
 pass2: ${pass2},
-loading: ${loading},
 nameValid: ${nameValid},
+nameError: ${nameError},
 emailValid: ${emailValid},
 phoneValid: ${phoneValid},
 pass1Valid: ${pass1Valid},
 isFormValid: ${isFormValid},
-signUpPressed: ${signUpPressed}
+loading: ${loading}
     ''';
   }
 }

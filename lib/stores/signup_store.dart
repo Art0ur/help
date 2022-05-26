@@ -9,7 +9,7 @@ abstract class _SignupStore with Store {
   //Todos sao chamado em signup_store
   //Verificacao nome digitado
   @observable
-  late String name;
+  String name = '';
 
   //Deixei pra nao apresentar erros e validar os outros campos
   get teste => null;
@@ -21,30 +21,31 @@ abstract class _SignupStore with Store {
   @computed
   bool get nameValid => name != null && name.length > 6;
 
+  @computed
   String? get nameError{
-    /*
-    if(name == null && nameValid)                 //Verificacao OK
+
+    if(name == '' && nameValid)                 //Verificacao OK
       return null;
     else if(name.isEmpty)                         //Se vazio
       return 'Campo Obrigatorio';
     else
       return 'Nome muito curto';
-    */
+
     //Deixei pra nao apresentar erros e validar os outros campos
     //validator: (value){
-    if (teste == null){
+    /*if (teste == null){
       return 'Digite um texto';
       }
     else if(teste.isEmpty) {
       return 'Campo Obrigatorio';
     } else {
       return null;
-    }
+    }*/
   }
 
   //Verificacao email. Regex em Helpers > extensions.dart
   @observable
-  late String email;
+   String email ='';
 
   @action
   void setEmail(String value) => email = value;
@@ -63,7 +64,7 @@ abstract class _SignupStore with Store {
 
   //Verificacao telefone
   @observable
-  late String phone;
+  String phone='';
 
   @action
   void setPhone(String value) => phone = value;
@@ -82,7 +83,7 @@ abstract class _SignupStore with Store {
 
   //Verificacao Senha
   @observable
-  late String pass1;
+   String pass1 = '';
 
   @action
   void setPass1(String value) => pass1 = value;
@@ -101,7 +102,7 @@ abstract class _SignupStore with Store {
 
   //Verificacao se a senha confere
   @observable
-  late String pass2;
+   String pass2 ='';
 
   @action
   void setPass2(String value) => pass2 = value;
@@ -119,19 +120,23 @@ abstract class _SignupStore with Store {
   bool get isFormValid => nameValid && emailValid
       && phoneValid && pass1Valid && pass2Valid;
 
-  @computed
-  Future<void> Function()? get signUpPressed => (isFormValid && !loading) ? _signUp : null;
+  //@computed
+  //Function get signUpPressed => (isFormValid && !loading) ? _signUp : null;
+  //Future<void> Function() get signUpPressed => (isFormValid && !loading) ? _signUp : _signUp;
 
   @observable
-  late bool loading = false;
+  bool _loading = false;
+
+  @computed
+  bool get loading => _loading;
 
   @action
   Future<void> _signUp() async{
-    loading = true;
+    _loading = true;
 
     await Future.delayed(const Duration(seconds: 2));
 
-    loading = (false);
+    _loading = (false);
 
   }
 }
