@@ -132,7 +132,7 @@ abstract class _SignupStore with Store {
 
   @action
   Future<void> _signUp() async{
-    _loading = true;
+    _loading = false;
 
     await Future.delayed(const Duration(seconds: 2));
 
