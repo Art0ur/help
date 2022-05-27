@@ -50,6 +50,13 @@ mixin _$SignupStore on _SignupStore, Store {
       (_$isFormValidComputed ??= Computed<bool>(() => super.isFormValid,
               name: '_SignupStore.isFormValid'))
           .value;
+  Computed<dynamic Function()>? _$signUpPressedComputed;
+
+  @override
+  dynamic Function() get signUpPressed => (_$signUpPressedComputed ??=
+          Computed<dynamic Function()>(() => super.signUpPressed,
+              name: '_SignupStore.signUpPressed'))
+      .value;
   Computed<bool>? _$loadingComputed;
 
   @override
@@ -228,6 +235,7 @@ emailValid: ${emailValid},
 phoneValid: ${phoneValid},
 pass1Valid: ${pass1Valid},
 isFormValid: ${isFormValid},
+signUpPressed: ${signUpPressed},
 loading: ${loading}
     ''';
   }

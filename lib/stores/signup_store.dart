@@ -1,5 +1,8 @@
+import 'package:help/repositories/user_repository.dart';
 import 'package:mobx/mobx.dart';
 import 'package:help/helpers/extensions.dart';
+
+import '../models/user.dart';
 part 'signup_store.g.dart';
 
 class SignupStore = _SignupStore with _$SignupStore;
@@ -13,7 +16,7 @@ abstract class _SignupStore with Store {
 
   //Deixei pra nao apresentar erros e validar os outros campos
   //get teste => null;
-  
+
   @action
   void setName(String value) => name = value;
 
@@ -22,11 +25,10 @@ abstract class _SignupStore with Store {
   bool get nameValid => name != null && name.length > 6;
 
   @computed
-  String? get nameError{
-
-    if(name == null || nameValid)                 //Verificacao OK
+  String? get nameError {
+    if (name == null || nameValid) //Verificacao OK
       return null;
-    else if(name.isEmpty)                         //Se vazio
+    else if (name.isEmpty) //Se vazio
       return 'Campo Obrigatorio';
     else
       return 'Nome muito curto';
@@ -45,17 +47,18 @@ abstract class _SignupStore with Store {
 
   //Verificacao email. Regex em Helpers > extensions.dart
   @observable
-   String email ='';
+  String email = '';
 
   @action
   void setEmail(String value) => email = value;
 
   @computed
   bool get emailValid => email != null && email.isEmailValid();
-  String? get emailError{
-    if(email == null || emailValid) {
+
+  String? get emailError {
+    if (email == null || emailValid) {
       return null;
-    } else if(email.isEmpty) {
+    } else if (email.isEmpty) {
       return 'Campo Obrigatorio';
     } else {
       return 'E-mail invalido';
@@ -64,13 +67,14 @@ abstract class _SignupStore with Store {
 
   //Verificacao telefone
   @observable
-  String phone='';
+  String phone = '';
 
   @action
   void setPhone(String value) => phone = value;
 
   @computed
   bool get phoneValid => phone != null && phone.length >= 14;
+
   String? get phoneError {
     if (phone == null || phoneValid) {
       return null;
@@ -83,13 +87,14 @@ abstract class _SignupStore with Store {
 
   //Verificacao Senha
   @observable
-   String pass1 = '';
+  String pass1 = '';
 
   @action
   void setPass1(String value) => pass1 = value;
 
   @computed
   bool get pass1Valid => pass1 != null && pass1.length > 6;
+
   String? get pass1Error {
     if (pass1 == null || pass1Valid) {
       return null;
@@ -102,12 +107,13 @@ abstract class _SignupStore with Store {
 
   //Verificacao se a senha confere
   @observable
-   String pass2 ='';
+  String pass2 = '';
 
   @action
   void setPass2(String value) => pass2 = value;
 
   bool get pass2Valid => pass2 != null && pass2 == pass1;
+
   String? get pass2Error {
     if (pass2 == null || pass2Valid) {
       return null;
@@ -120,9 +126,10 @@ abstract class _SignupStore with Store {
   bool get isFormValid => nameValid && emailValid
       && phoneValid && pass1Valid && pass2Valid;
 
-  //@computed
+  @computed
   //Function get signUpPressed => (isFormValid && !loading) ? _signUp : null;
   //Future<void> Function() get signUpPressed => (isFormValid && !loading) ? _signUp : _signUp;
+  Function() get signUpPressed => (isFormValid && !loading) ? _signUp : _signUp;
 
   @observable
   bool _loading = false;
@@ -134,7 +141,16 @@ abstract class _SignupStore with Store {
   Future<void> _signUp() async{
     _loading = true;
 
-    await Future.delayed(const Duration(seconds: 2));
+    final user = User(
+      name: name,
+      email: email,
+      phone: phone,
+      password: pass1
+    );
+
+    await UserRepository().signUp(user);
+
+    //await Future.delayed(const Duration(seconds: 2));
 
     _loading = (false);
 
