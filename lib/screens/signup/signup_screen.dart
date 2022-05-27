@@ -144,7 +144,7 @@ class SignUpScreen extends StatelessWidget {
                         margin: const EdgeInsets.only(top: 20, bottom: 12),
                         child: RaisedButton(
                           color: Colors.black,
-                          disabledColor: Colors.black.withAlpha(120),
+                          disabledColor: Colors.red.withAlpha(120),
                           child: signupStore.loading
                               ? CircularProgressIndicator(
                             valueColor: AlwaysStoppedAnimation(Colors.yellow),
@@ -156,6 +156,7 @@ class SignUpScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20)
                           ),
                           onPressed: null,// signupStore.signUpPressed,
+                          //onPressed: signupStore.signUpPressed,
                         ),
                       );
                     }),

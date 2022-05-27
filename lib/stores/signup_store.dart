@@ -12,7 +12,7 @@ abstract class _SignupStore with Store {
   String name = '';
 
   //Deixei pra nao apresentar erros e validar os outros campos
-  get teste => null;
+  //get teste => null;
   
   @action
   void setName(String value) => name = value;
@@ -24,7 +24,7 @@ abstract class _SignupStore with Store {
   @computed
   String? get nameError{
 
-    if(name == '' && nameValid)                 //Verificacao OK
+    if(name == null || nameValid)                 //Verificacao OK
       return null;
     else if(name.isEmpty)                         //Se vazio
       return 'Campo Obrigatorio';
