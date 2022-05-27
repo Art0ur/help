@@ -134,6 +134,9 @@ abstract class _SignupStore with Store {
   @observable
   bool _loading = false;
 
+  @observable
+  String error = ' ';
+
   @computed
   bool get loading => _loading;
 
@@ -148,8 +151,12 @@ abstract class _SignupStore with Store {
       password: pass1
     );
 
-    await UserRepository().signUp(user);
+    try {
+      await UserRepository().signUp(user);
+    } catch(e){
+      error = (e as String?)!;
 
+    }
     //await Future.delayed(const Duration(seconds: 2));
 
     _loading = (false);
