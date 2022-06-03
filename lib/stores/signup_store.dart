@@ -148,11 +148,12 @@ abstract class _SignupStore with Store {
       name: name,
       email: email,
       phone: phone,
-      password: pass1
+      password: pass1,
     );
 
     try {
-      await UserRepository().signUp(user);
+      final resultUser = await UserRepository().signUp(user);
+      print(resultUser);
     } catch(e){
       error = (e as String?)!;
 

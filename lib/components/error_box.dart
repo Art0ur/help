@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ErrorBox extends StatelessWidget {
+
   ErrorBox({required this.message});
 
   final String message;
 
   @override
   Widget build(BuildContext context) {
-    if (message == null) return Container();
+    if (message == null)
+      return Container();
     return Container(
       color: Colors.red,
       padding: const EdgeInsets.all(8),
@@ -23,8 +25,10 @@ class ErrorBox extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              'Opa! $message. Por favor, tente novamente',
-              style: TextStyle(color: Colors.white, fontSize: 14),
+              '$message. Por favor, tente novamente',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14),
             ),
           ),
         ],
