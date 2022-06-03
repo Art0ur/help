@@ -26,7 +26,7 @@ abstract class _LoginStore with Store {
 
   @computed
   bool get passwordValid => password != null && password.length >= 4;
-  String? get passwordError => passwordValid ? null : 'Senha invalida';
+  String? get passwordError => passwordValid ? null : 'Senhaa invalida';
 
   //Function() get signUpPressed => (isFormValid && !loading) ? _signUp : _signUp;
   @computed
