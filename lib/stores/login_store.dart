@@ -51,7 +51,7 @@ abstract class _LoginStore with Store {
       //print(user);
       GetIt.I<UserManagerStore>().setUser(user);    //Fazer login e salvar o usuario dentro do UserManagerStore
     } catch(e){
-      error = (e as String?)!;      //Rever d
+      error = (e as String?)!;      //Rever ds
     }
     loading = false;
 
