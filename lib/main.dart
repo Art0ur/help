@@ -12,7 +12,7 @@ void main() async {
   runApp(const MyApp());
 }
 
-//GetIt serviceLocator, utilizo ele para localizar servicos do meu App
+//GetIt serviceLocator, utilizo ele para localizar servicos do meu App xd
 void setupLocators(){
   GetIt.I.registerSingleton(PageStore());
   GetIt.I.registerSingleton(UserManagerStore());
