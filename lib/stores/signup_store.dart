@@ -1,4 +1,6 @@
+import 'package:get_it/get_it.dart';
 import 'package:help/repositories/user_repository.dart';
+import 'package:help/stores/user_manager_store.dart';
 import 'package:mobx/mobx.dart';
 import 'package:help/helpers/extensions.dart';
 
@@ -12,7 +14,7 @@ abstract class _SignupStore with Store {
   //Todos sao chamado em signup_store
   //Verificacao nome digitado
   @observable
-  String name = '';
+  String name = "";
 
   //Deixei pra nao apresentar erros e validar os outros campos
   //get teste => null;
@@ -47,7 +49,7 @@ abstract class _SignupStore with Store {
 
   //Verificacao email. Regex em Helpers > extensions.dart
   @observable
-  String email = '';
+  String email = "";
 
   @action
   void setEmail(String value) => email = value;
@@ -67,7 +69,7 @@ abstract class _SignupStore with Store {
 
   //Verificacao telefone
   @observable
-  String phone = '';
+  String phone = "";
 
   @action
   void setPhone(String value) => phone = value;
@@ -87,7 +89,7 @@ abstract class _SignupStore with Store {
 
   //Verificacao Senha
   @observable
-  String pass1 = '';
+  String pass1 = "";
 
   @action
   void setPass1(String value) => pass1 = value;
@@ -107,7 +109,7 @@ abstract class _SignupStore with Store {
 
   //Verificacao se a senha confere
   @observable
-  String pass2 = '';
+  String pass2 = "";
 
   @action
   void setPass2(String value) => pass2 = value;
@@ -135,7 +137,7 @@ abstract class _SignupStore with Store {
   bool _loading = false;
 
   @observable
-  String error = ' ';
+  String error = "";
 
   @computed
   bool get loading => _loading;
@@ -153,7 +155,8 @@ abstract class _SignupStore with Store {
 
     try {
       final resultUser = await UserRepository().signUp(user);
-      print(resultUser);
+      //print(resultUser);
+      GetIt.I<UserManagerStore>().setUser(resultUser);
     } catch(e){
       error = (e as String?)!;
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:help/screens/base/base_screen.dart';
 import 'package:help/stores/page_store.dart';
+import 'package:help/stores/user_manager_store.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
 void main() async {
@@ -14,6 +15,7 @@ void main() async {
 //GetIt serviceLocator, utilizo ele para localizar servicos do meu App
 void setupLocators(){
   GetIt.I.registerSingleton(PageStore());
+  GetIt.I.registerSingleton(UserManagerStore());
 }
 
 Future<void> initializeParse() async{
