@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:help/stores/login_store.dart';
+import '../../components/error_box.dart';
 import '../signup/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -38,6 +39,14 @@ class LoginScreen extends StatelessWidget {
                       color: Colors.grey[900],
                     ),
                   ),
+                  Observer(builder: (_) {
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: ErrorBox(
+                        message: loginStore.error,
+                      ),
+                    );
+                  }),
                   Padding(
                     padding: const EdgeInsets.only(left: 3, bottom: 4, top: 8),
                     child: Text(
@@ -49,7 +58,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Observer(builder: (_){
+                  Observer(builder: (_) {
                     return TextField(
                       enabled: !loginStore.loading,
                       decoration: InputDecoration(
@@ -89,8 +98,9 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Observer(builder:(_){
-                    return TextField(enabled: !loginStore.loading,
+                  Observer(builder: (_) {
+                    return TextField(
+                      enabled: !loginStore.loading,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(),
                         isDense: true,
@@ -100,7 +110,7 @@ class LoginScreen extends StatelessWidget {
                       onChanged: loginStore.setPassword,
                     );
                   }),
-                  Observer(builder: (_){
+                  Observer(builder: (_) {
                     return Container(
                       height: 40,
                       margin: const EdgeInsets.symmetric(vertical: 10),
@@ -108,10 +118,11 @@ class LoginScreen extends StatelessWidget {
                         color: Colors.black,
                         disabledColor: Colors.black.withAlpha(120),
                         child: loginStore.loading
-                          ? CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation(Colors.white),
-                        )
-                          : Text('Entrar'),
+                            ? CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation(Colors.white),
+                              )
+                            : Text('Entrar'),
                         textColor: Colors.yellow,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
