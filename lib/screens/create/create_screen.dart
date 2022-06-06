@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:help/components/custom_drawer/custom_drawer.dart';
 import 'package:help/screens/create/components/images_field.dart';
+import 'package:help/stores/create_store.dart';
 
 class CreateScreen extends StatelessWidget {
+  final CreateStore createStore = CreateStore();
+
   @override
   Widget build(BuildContext context) {
     final labelStyle = TextStyle(
@@ -29,7 +32,7 @@ class CreateScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ImagesField(),
+            ImagesField(createStore),
             TextFormField(
               decoration: InputDecoration(
                 labelText: 'Titulo *',

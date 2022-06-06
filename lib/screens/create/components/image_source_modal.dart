@@ -58,7 +58,8 @@ class ImageSourceModal extends StatelessWidget {
           toolbarColor: Colors.yellow,
           toolbarWidgetColor: Colors.black),
     );
-    //onImageSelected(croppedFile);
+    //if (croppedFile == null) return;
+    //onImageSelected(croppedFile); //rever porque nao ta funcionando
   }
 }
 
