@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:help/screens/create/create_screen.dart';
 import 'package:help/stores/page_store.dart';
 import 'package:mobx/mobx.dart';
 import '../home/home_screen.dart';
@@ -36,7 +37,7 @@ class _BaseScreenState extends State<BaseScreen> {
         physics: const NeverScrollableScrollPhysics(),                            //https://api.flutter.dev/flutter/widgets/NeverScrollableScrollPhysics-class.html
         children: [
           HomeScreen(),
-          //Container(color: Colors.red,),
+          CreateScreen(),
           Container(color: Colors.green,),
           Container(color: Colors.yellow,),
           Container(color: Colors.purple,),
