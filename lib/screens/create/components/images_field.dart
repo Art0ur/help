@@ -1,10 +1,15 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:help/screens/create/components/image_source_modal.dart';
 
 class ImagesField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    void onImageSelected(File image) {
+      Navigator.of(context).pop(); //Rever dialogo nao some
+    }
+
     return Container(
       color: Colors.grey[200],
       height: 120,
@@ -19,7 +24,7 @@ class ImagesField extends StatelessWidget {
               onTap: () {
                 showModalBottomSheet(
                   context: context,
-                  builder: (_) => ImageSourceModal(),
+                  builder: (_) => ImageSourceModal(onImageSelected),
                 );
               },
               child: CircleAvatar(
