@@ -17,6 +17,7 @@ class ImageSourceModal extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          //https://docs.flutter.dev/release/breaking-changes/buttons
           FlatButton(
             onPressed: getFromCamera,
             child: const Text('Camera'),
@@ -58,8 +59,12 @@ class ImageSourceModal extends StatelessWidget {
           toolbarColor: Colors.yellow,
           toolbarWidgetColor: Colors.black),
     );
-    //if (croppedFile == null) return;
-    //onImageSelected(croppedFile); //rever porque nao ta funcionando
+
+    if (croppedFile == null) return;
+    {
+      onImageSelected(File(croppedFile.path));
+      //onImageSelected(croppedFile);
+    }
   }
 }
 

@@ -5,6 +5,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:help/screens/create/components/image_source_modal.dart';
 import 'package:help/stores/create_store.dart';
 
+import 'image_dialog.dart';
+
 class ImagesField extends StatelessWidget {
   ImagesField(this.createStore);
 
@@ -24,7 +26,9 @@ class ImagesField extends StatelessWidget {
         builder: (_) {
           return ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: createStore.images.length + 1,
+            itemCount: createStore.images.length < 5
+                ? createStore.images.length + 1
+                : 5, //5 Quantidade maxima de anuncios
             itemBuilder: (_, index) {
               if (index == createStore.images.length)
                 return Padding(
@@ -59,17 +63,24 @@ class ImagesField extends StatelessWidget {
                 );
               else {
                 return Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 8, 0, 8),
+                  padding: EdgeInsets.fromLTRB(8, 16, index == 4 ? 8 : 0, 16),
                   child: GestureDetector(
                     //mapear botao
-                    onTap: () {},
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (_) => ImageDialog(
+                            image: createStore.images[index],
+                            onDelete: () => createStore.images.removeAt(index)),
+                      );
+                    },
                     child: CircleAvatar(
                       radius: 44,
-                      backgroundImage: //FileImage(
-                          createStore.images[index],
+                      backgroundImage: FileImage(
+                        createStore.images[index],
+                      ),
                     ),
                   ),
-                  //),
                 );
               }
             },
