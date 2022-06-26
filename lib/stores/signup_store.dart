@@ -1,16 +1,16 @@
 import 'package:get_it/get_it.dart';
+import 'package:help/helpers/extensions.dart';
 import 'package:help/repositories/user_repository.dart';
 import 'package:help/stores/user_manager_store.dart';
 import 'package:mobx/mobx.dart';
-import 'package:help/helpers/extensions.dart';
 
 import '../models/user.dart';
+
 part 'signup_store.g.dart';
 
 class SignupStore = _SignupStore with _$SignupStore;
 
 abstract class _SignupStore with Store {
-
   //Todos sao chamado em signup_store
   //Verificacao nome digitado
   @observable
@@ -125,8 +125,8 @@ abstract class _SignupStore with Store {
   }
 
   @computed
-  bool get isFormValid => nameValid && emailValid
-      && phoneValid && pass1Valid && pass2Valid;
+  bool get isFormValid =>
+      nameValid && emailValid && phoneValid && pass1Valid && pass2Valid;
 
   @computed
   //Function get signUpPressed => (isFormValid && !loading) ? _signUp : null;
@@ -143,7 +143,7 @@ abstract class _SignupStore with Store {
   bool get loading => _loading;
 
   @action
-  Future<void> _signUp() async{
+  Future<void> _signUp() async {
     _loading = true;
 
     final user = User(
@@ -157,16 +157,11 @@ abstract class _SignupStore with Store {
       final resultUser = await UserRepository().signUp(user);
       //print(resultUser);
       GetIt.I<UserManagerStore>().setUser(resultUser);
-    } catch(e){
+    } catch (e) {
       error = (e as String?)!;
-
     }
     //await Future.delayed(const Duration(seconds: 2));
 
     _loading = (false);
-
   }
 }
-
-
-
